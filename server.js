@@ -51,7 +51,12 @@ app.get('/missions', (req, res) => {
 // SHOW Route
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
-
+app.get('/missions/:index', (req, res) => {
+  //console.log(req.params.index);
+  res.render('show', {
+    mission: MarsMissions[req.params.index],
+  });
+});
 
 
 // LISTENER
