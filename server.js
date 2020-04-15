@@ -24,8 +24,13 @@ const app = express();
 const port = 3000;
 
 
+//-------- MIDDLEWARE
+// serve static files from styles directory
+app.use(express.static('styles'));
+
 //------------- VIEW ENGINE
 app.set('view engine', 'ejs');
+
 
 // ------------- MODELS
 // DATA - put into marsMissions.js file inside of a models folder, for module.exports
@@ -52,7 +57,7 @@ app.get('/missions', (req, res) => {
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
 app.get('/missions/:index', (req, res) => {
-  //console.log(req.params.index);
+  console.log(req.params.index);
   res.render('show', {
     mission: MarsMissions[req.params.index],
   });
