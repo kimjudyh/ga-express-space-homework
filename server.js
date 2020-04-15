@@ -1,3 +1,4 @@
+// ------------ IMPORT
 // DEPENDENCIES
 const express = require('express');
 const app = express();
@@ -22,9 +23,6 @@ const app = express();
 // PORT
 const port = 3000;
 
-// ------------ IMPORT
-const express = require('express');
-const app = express();
 
 //------------- VIEW ENGINE
 app.set('view engine', 'ejs');
@@ -35,11 +33,20 @@ app.set('view engine', 'ejs');
 const MarsMissions = require('./models/marsMissions');
 
 // ------------ ROUTES
+// Root Route
+app.get('/', (req, res) => {
+  res.send('Welcome to Express Space HW');
+});
 
 // INDEX Route
 // send data to 'missions/index.ejs' view
 // the view should display just the names of each mission
 // display the mission names as <li> in a <ul> with the class name "missions"
+app.get('/missions', (req, res) => {
+  res.render('index', {
+    missions: MarsMissions,
+  });
+});
 
 // SHOW Route
 // send data to 'missions/show.ejs' view
