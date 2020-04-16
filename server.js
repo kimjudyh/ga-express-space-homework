@@ -26,7 +26,7 @@ const port = 3000;
 
 //-------- MIDDLEWARE
 // serve static files from styles directory
-app.use(express.static('styles'));
+app.use(express.static('public'));
 
 //------------- VIEW ENGINE
 app.set('view engine', 'ejs');
