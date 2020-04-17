@@ -58,7 +58,8 @@ app.get('/missions', (req, res) => {
 // the view should display all the data for a single mission
 app.get('/missions/:index', (req, res) => {
   console.log(req.params.index);
-  res.render('show', {
+  //res.render(`${__dirname}/views/missions/show`, {
+  res.render('missions/show.ejs', {
     mission: MarsMissions[req.params.index],
   });
 });
