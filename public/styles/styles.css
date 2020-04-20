@@ -5,7 +5,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-/*
+
 .container {
   display: flex;
   flex-direction: column;
@@ -14,8 +14,16 @@ body {
   width: 50%;
 }
 
+.container p {
+  margin: 5px 0 0 0;
+}
+
+.container a {
+  margin: 5px 0 0 0;
+}
+
 h1 {
-  margin: 10px 0 0 0;
+  margin: 10px 0 5px 0;
 }
 
 ul {
@@ -31,4 +39,10 @@ li {
   text-align: center;
   font-size: 1.5em;
 }
-*/
+
+img {
+  max-height: 400px;
+  max-width: 600px;
+  height: auto;
+  width: auto; 
+}

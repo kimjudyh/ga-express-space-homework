@@ -1,6 +1,7 @@
 // ------------ IMPORT
 // DEPENDENCIES
 const express = require('express');
+const path = require('path');
 const app = express();
 
 // run `npm install` to install dependencies in package.json
@@ -26,7 +27,13 @@ const port = 3000;
 
 //-------- MIDDLEWARE
 // serve static files from styles directory
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ---------- Custom Middleware
+app.use((req, res, next) => {
+  console.log(`Request received ${req.url}`);
+  next();
+})
 
 //------------- VIEW ENGINE
 app.set('view engine', 'ejs');
@@ -40,7 +47,7 @@ const MarsMissions = require('./models/marsMissions');
 // ------------ ROUTES
 // Root Route
 app.get('/', (req, res) => {
-  res.send('Welcome to Express Space HW');
+  res.send('Welcome to Express Space HW </br> <a href="/missions">Missions</a>');
 });
 
 // INDEX Route
@@ -57,8 +64,6 @@ app.get('/missions', (req, res) => {
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
 app.get('/missions/:index', (req, res) => {
-  console.log(req.params.index);
-  //res.render(`${__dirname}/views/missions/show`, {
   res.render('missions/show.ejs', {
     mission: MarsMissions[req.params.index],
   });
